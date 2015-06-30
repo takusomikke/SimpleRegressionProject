@@ -1,20 +1,21 @@
 package simpleregression;
 
 import java.util.List;
-import java.util.Scanner;
 
 public class SimpleRegressionTest {
     public static void main(String[] args) {
 
-        @SuppressWarnings("resource")
-        Scanner sc = new Scanner(System.in);
+//        @SuppressWarnings("resource")
+//        Scanner sc = new Scanner(System.in);
+//
+//        //ファイル名を読み込みます。
+//        System.out.println("読み込むファイルの完全パスを入力してください。");
+//
+//        //ファイルを読み込み、内部で列ごとのリストを生成。
+//        SCVReader scvreader = new SCVReader(sc.next());
 
-        //ファイル名を読み込みます。
-        System.out.println("読み込むファイルの完全パスを入力してください。");
-
-        //ファイルを読み込み、内部で列ごとのリストを生成。
-        SCVReader scvreader = new SCVReader(sc.next());
-
+        MyFileDialog filedialog = new MyFileDialog();
+        SCVReader scvreader = new SCVReader(filedialog.getFileFullName());
         //それぞれの列のデータを格納
         List<Double> coffeelist = scvreader.getPara1List();
         List<Double> lunchlist = scvreader.getPara2List();
@@ -49,3 +50,5 @@ public class SimpleRegressionTest {
 
     }
 }
+
+//C:\Users\levelfive\Documents\CoffeeLunch.csv

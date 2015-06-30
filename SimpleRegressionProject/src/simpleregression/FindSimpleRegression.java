@@ -19,7 +19,6 @@ public class FindSimpleRegression {
         double slope = regression.getSlope();
 
         parameterdata = new ParameterData(paralist,codelist,intercept,slope);
-
     }
 
     public ParameterData getParameterData(){

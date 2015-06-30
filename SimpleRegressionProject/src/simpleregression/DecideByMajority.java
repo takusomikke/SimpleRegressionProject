@@ -8,34 +8,36 @@ public class DecideByMajority {
 
     public DecideByMajority(ParameterData para1,ParameterData para2){
 
-        List<Double> para1calccodelist = getCalcCodeList(para1);
-        List<Double> para2calccodelist = getCalcCodeList(para2);
+        List<Double> para1diffcodelist = getDifferenceOfCodeList(para1);
+        List<Double> para2diffcodelist = getDifferenceOfCodeList(para2);
 
-        for(int i = 0; i < para1calccodelist.size();i++){
-            if(para1calccodelist.get(i) > para2calccodelist.get(i)){
+        for(int i = 0; i < para1diffcodelist.size();i++){
+            if(para1diffcodelist.get(i) < para2diffcodelist.get(i)){
                 judge++;
-            }else if(para1calccodelist.get(i) < para2calccodelist.get(i)){
+            }else if(para1diffcodelist.get(i) > para2diffcodelist.get(i)){
                 judge--;
             }
         }
-
     }
 
     public int getJudge(){
         return judge;
     }
 
-    private List<Double> getCalcCodeList(ParameterData para){
+    /*
+     * 線形回帰によって得られたデータで計算したコード量と
+     * 実際のコード量を比較し、その差の絶対値をリストに入れて返す。
+     */
+    private List<Double> getDifferenceOfCodeList(ParameterData para){
         List<Double> paralist = para.getParalist();
-        List<Double> calccodelist = new ArrayList<Double>();
+        List<Double> differencecodelist = new ArrayList<Double>();
         double intercept = para.getIntercept();
         double slope = para.getSlope();
 
-
         for(int i = 0; i < paralist.size();i++){
-            calccodelist.add(slope*paralist.get(i)+intercept);
+            differencecodelist.add(Math.abs((slope*paralist.get(i)+intercept)-paralist.get(i)));
         }
 
-        return calccodelist;
+        return differencecodelist;
     }
 }
