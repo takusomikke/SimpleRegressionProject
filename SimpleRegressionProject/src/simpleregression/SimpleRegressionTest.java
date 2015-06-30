@@ -12,14 +12,14 @@ public class SimpleRegressionTest {
 //        System.out.println("読み込むファイルの完全パスを入力してください。");
 //
 //        //ファイルを読み込み、内部で列ごとのリストを生成。
-//        SCVReader scvreader = new SCVReader(sc.next());
+//        SCVReader csvreader = new SCVReader(sc.next());
 
         MyFileDialog filedialog = new MyFileDialog();
-        SCVReader scvreader = new SCVReader(filedialog.getFileFullName());
+        CSVReader csvreader = new CSVReader(filedialog.getFileFullName());
         //それぞれの列のデータを格納
-        List<Double> coffeelist = scvreader.getPara1List();
-        List<Double> lunchlist = scvreader.getPara2List();
-        List<Double> codelist = scvreader.getCodelist();
+        List<Double> coffeelist = csvreader.getPara1List();
+        List<Double> lunchlist = csvreader.getPara2List();
+        List<Double> codelist = csvreader.getCodelist();
 
         //コーヒー列とコード列の相関関係を求める。
         //二つの列から計算される傾きと切片を格納したParameterData型が返ってくる。

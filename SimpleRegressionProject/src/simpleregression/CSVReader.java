@@ -7,13 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
-public class SCVReader{
+public class CSVReader{
     private List<String> idlist;
     private List<Double> para1list;
     private List<Double> para2list;
     private List<Double> codelist;
 
-    public SCVReader(String filename){
+    public CSVReader(String filename){
         idlist = new ArrayList<String>();
         para1list = new ArrayList<Double>();
         para2list = new ArrayList<Double>();
